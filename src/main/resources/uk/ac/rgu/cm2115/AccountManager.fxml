@@ -1,0 +1,85 @@
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="400.0" prefWidth="640.0"
+    xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="uk.ac.rgu.cm2115.AccountManagerController">
+    <children>
+        <BorderPane prefHeight="400.0" prefWidth="640.0">
+          <top>
+            <Label alignment="CENTER" contentDisplay="CENTER"
+              prefHeight="28.0" prefWidth="641.0" text="Account Manager"
+              BorderPane.alignment="CENTER">
+              <font>
+                <Font name="System Bold" size="48.0" />
+              </font>
+            </Label>
+          </top>
+            <left>
+                <AnchorPane prefHeight="340.0" prefWidth="214.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <!-- Adjusted elements within the AnchorPane -->
+                        <Label prefHeight="30.0" prefWidth="215.0" text="Customers" layoutX="10.0" layoutY="14.0">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
+                        </Label>
+                        <ComboBox prefHeight="35.0" prefWidth="216.0" fx:id="customersCombox" layoutX="10.0" layoutY="49.0" />
+                        <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="220.0" text="View Details" fx:id="viewCustomerBtn" onAction="#viewCustomerDetails" layoutX="10.0" layoutY="94.0">
+                            <font>
+                                <Font name="System Bold" size="13.0" />
+                            </font>
+                        </Button>
+                    </children>
+                </AnchorPane>
+            </left>
+            <center>
+                <AnchorPane prefHeight="337.0" prefWidth="395.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <!-- Adjusted elements within the AnchorPane -->
+                        <Label prefHeight="41.0" prefWidth="426.0" text="Add Customer" layoutX="10.0" layoutY="14.0">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
+                        </Label>
+                        <VBox prefHeight="298.0" prefWidth="426.0" spacing="10.0" layoutX="10.0" layoutY="55.0">
+                            <children>
+                                <Label text="Name:" layoutX="10.0" layoutY="10.0">
+                                    <font>
+                                        <Font name="System Bold" size="13.0" />
+                                    </font>
+                                </Label>
+                                <TextField fx:id="custName" layoutX="10.0" layoutY="35.0" />
+                                <Label text="Address:" layoutX="10.0" layoutY="71.0">
+                                    <font>
+                                        <Font name="System Bold" size="13.0" />
+                                    </font>
+                                </Label>
+                                <TextArea prefHeight="109.0" prefWidth="412.0" fx:id="custAddress" layoutX="10.0" layoutY="96.0" />
+                                <Label text="Customer Type:" layoutX="10.0" layoutY="215.0">
+                                    <font>
+                                        <Font name="System Bold" size="13.0" />
+                                    </font>
+                                </Label>
+                                <ComboBox prefWidth="150.0" fx:id="custTypes" layoutX="10.0" layoutY="240.0" />
+                                <Button mnemonicParsing="false" prefHeight="34.0" prefWidth="425.0" text="Add Customer" fx:id="addCustomerBtn" onAction="#addNewCustomer" layoutX="10.0" layoutY="280.0">
+                                    <font>
+                                        <Font name="System Bold" size="13.0" />
+                                    </font>
+                                </Button>
+                            </children>
+                        </VBox>
+                    </children>
+                </AnchorPane>
+            </center>
+        </BorderPane>
+    </children>
+</AnchorPane>
