@@ -1,15 +1,21 @@
-package uk.ac.rgu.cm2115;
+package ui.bank;
 
-public class RewardAccount extends BankAccount implements CurrentAccount, SavingsAccount {
+public class BasicAccount extends BankAccount implements CurrentAccount {
 
-	public RewardAccount(String accountName) {
+	public BasicAccount(String accountName) {
 		super(accountName);
 	}
-
-	@Override
-	public void applyInterest(int amount) {
-		deposit(amount);
+	public BasicAccount(String accountName,int sortCcode) {
+		this(accountName);
+		this.sortCode=sortCcode;
+		
 	}
+	public BasicAccount(String accountName,int sortCode,int balance) {
+		this(accountName,sortCode);
+		this.balance = balance;
+		
+	}
+	
 
 	@Override
 	public void processCardTransactions(int amount) {
@@ -33,4 +39,5 @@ public class RewardAccount extends BankAccount implements CurrentAccount, Saving
 		}
 		return false;
 	}
+
 }

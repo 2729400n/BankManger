@@ -1,7 +1,11 @@
-package uk.ac.rgu.cm2115;
+package ui.bank;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOError;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -45,14 +49,12 @@ public class AccountManager {
 				String customerName = parts[5];
 
 				if ("BasicAccount".equals(accountType)) {
-					BasicAccount account = new BasicAccount(accountName);
-					account.accountNumber = accountNumber;
-					account.sortCode = sortCode;
+					BasicAccount account = new BasicAccount(accountName,sortCode,balance);
 					if (customerMap.containsKey(customerName)) {
 						customerMap.get(customerName).getAccounts().add(account);
 					}
 				} else if ("RewardAccount".equals(accountType)) {
-					RewardAccount account = new RewardAccount(accountName);
+					RewardAccount account = new RewardAccount(accountName,sortCode,balance);
 					account.accountNumber = accountNumber;
 					account.sortCode = sortCode;
 					if (customerMap.containsKey(customerName)) {
@@ -70,7 +72,7 @@ public class AccountManager {
 			}
 
 		} catch (FileNotFoundException e) {
-			System.err.println(e.getMessage());
+			e.printStackTrace();
 		}
 
 	}
@@ -81,6 +83,29 @@ public class AccountManager {
 			return true;
 		}
 		return false;
+	}
+
+	public boolean removeCustomers(Customer customer) {
+		if (!customers.contains(customer)) {
+			customers.remove(customer);
+			return true;
+		}
+		return false;
+	}
+
+	public void applyCustomerSave() {
+		try{
+			File f = new File("CustomerAccounts.csv");
+			FileWriter fw = new FileWriter(f);
+			for (Customer customer : customers) {
+				
+			}
+
+		}catch(IOException ex){
+
+		}catch(IOError ierr){
+
+		}
 	}
 
 	public List<Customer> getCustomers() {

@@ -1,7 +1,6 @@
-module uk.ac.rgu.cm2115 {
+module ui.bank {
     requires transitive javafx.controls;
     requires transitive javafx.fxml;
-
-    opens uk.ac.rgu.cm2115 to javafx.fxml;
-    exports uk.ac.rgu.cm2115;
+    opens ui.bank to javafx.fxml;
+    exports ui.bank;
 }

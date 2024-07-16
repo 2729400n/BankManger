@@ -1,4 +1,4 @@
-package uk.ac.rgu.cm2115;
+package ui.bank;
 
 public enum CustomerType {
     INDIVIDUAL, BUSINESS, CHARITY

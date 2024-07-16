@@ -1,14 +1,14 @@
-package uk.ac.rgu.cm2115;
+package ui.bank;
 
-public class BasicAccount extends BankAccount implements CurrentAccount {
+public class ISA extends BankAccount implements SavingsAccount {
 
-	public BasicAccount(String accountName) {
+	public ISA(String accountName) {
 		super(accountName);
 	}
 
 	@Override
-	public void processCardTransactions(int amount) {
-		withdraw(amount);
+	public void applyInterest(int amount) {
+		deposit(amount);
 	}
 
 	@Override

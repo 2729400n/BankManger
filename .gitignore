@@ -1,1 +1,4 @@
 target/
+**/Doid.java
+**/README.md
+**/*.py

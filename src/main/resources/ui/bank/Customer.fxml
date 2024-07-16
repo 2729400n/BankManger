@@ -10,10 +10,12 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.VBox?>
 
 <AnchorPane prefHeight="352.0" prefWidth="724.0"
     xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
-    fx:controller="uk.ac.rgu.cm2115.CustomerController">
+    fx:controller="ui.bank.CustomerController">
     <children>
         <BorderPane prefHeight="402.0" prefWidth="640.0">
           <top>
@@ -88,7 +90,7 @@
                           <Insets left="10.0" right="10.0" />
                         </padding>
                       </VBox>
-                      <VBox prefHeight="278.0" prefWidth="170.0" spacing="10.0">
+                      <VBox prefHeight="278.0" prefWidth="170.0" spacing="10.0" fx:id="viewDetailsHolder">
                         <children>
                           <Label prefHeight="27.0" prefWidth="165.0"
                             text="Account Name:" />
@@ -96,7 +98,7 @@
                             prefWidth="166.0" />
                           <Button mnemonicParsing="false"
                             onAction="#getAccountDetails" prefHeight="26.0"
-                            prefWidth="167.0" text="Get Account Details" />
+                            prefWidth="167.0" text="Get Account Details" fx:id="viewDetails" />
                         </children>
                       </VBox>
                     </children>

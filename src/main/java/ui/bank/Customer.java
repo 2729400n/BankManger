@@ -1,4 +1,4 @@
-package uk.ac.rgu.cm2115;
+package ui.bank;
 
 import java.util.ArrayList;
 import java.util.List;

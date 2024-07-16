@@ -1,13 +1,19 @@
-package uk.ac.rgu.cm2115;
+package ui.bank;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
+
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
@@ -28,6 +34,19 @@ public class AccountManagerController extends Controller<AccountManager> {
 
 	@FXML
 	private ComboBox<CustomerType> custTypes;
+	public AccountManager createModel(){
+		return new AccountManager();
+	}
+
+
+	public AccountManagerController(){
+		
+	}
+
+	@Override
+	public void setRootView(Parent rootView) {
+		super.setRootView(rootView);
+	}
 
 	@Override
 	public void setModel(AccountManager model) {
@@ -41,14 +60,16 @@ public class AccountManagerController extends Controller<AccountManager> {
 		Customer selectedCustomer = customersCombox.getSelectionModel().getSelectedItem();
 		if (null != selectedCustomer) {
 			try {
-				MainApp.setScene("CustomerDetails", selectedCustomer);
+				MainApp.setScene("Customer", selectedCustomer);
 			} catch (IOException e) {
 				e.printStackTrace();
+			}catch(URISyntaxException ue){
+
 			}
 		} else {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Error");
-			alert.setContentText("Customer is not selected");
+			alert.setContentText("No Customer Selected");
 			alert.show();
 		}
 	}
@@ -78,6 +99,35 @@ public class AccountManagerController extends Controller<AccountManager> {
 			alert.show();
 		}
 	}
+
+	@FXML
+	public void deleteCustomer(Event event) {
+
+		String name = custName.getText();
+		String address = custAddress.getText();
+		CustomerType customerType = custTypes.getSelectionModel().getSelectedItem();
+		Customer customer = new Customer(name, address, customerType);
+		if (model.removeCustomers(customer)) {
+			customersCombox.getItems().clear();
+			customersCombox.getItems().addAll(model.getCustomers());
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Success");
+			alert.setContentText("Customer has been removed successfully!");
+			alert.show();
+			persistCustomer();
+			custName.setText("");
+			custAddress.setText("");
+			custTypes.getSelectionModel().select(0);
+		} else {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Error");
+			alert.setContentText("Failed to remove customer!");
+			alert.show();
+		}
+		return;
+	}
+
+	
 
 	/**
 	 * Persist Customer details
